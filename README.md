@@ -1,2 +1,1 @@
 # ticaphub
-#GithubPleaseGumanaKaNaUwU
