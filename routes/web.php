@@ -34,6 +34,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+<<<<<<< Updated upstream
+=======
+// UPDATE NAMES
+Route::get('/users/profile', [UserController::class, 'PUpdate'])->name('profile.update');
+Route::post('/users/profile/update', [UserController::class, 'UpdateProfile'])->name('update.user.profile');
+
+
+>>>>>>> Stashed changes
 // HOME PAGE
 Route::get('/', function () { return view('home'); })->name('home');
 Route::get('/about-ticap', function () { return view('about-ticap'); })->name('about-ticap');
@@ -118,6 +126,12 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/generate-certificates', [AwardController::class, 'generateCertificates']);
         // ADMIN ROUTE
         Route::middleware(['admin'])->group(function(){
+            // HOME SLIDER
+            Route::get('home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
+            Route::get('add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
+            Route::get('slider/delete{id}', [HomeController::class, 'Delete']);
+            Route::post('store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
+            
             // USER ACCOUNTS
             Route::middleware(['set.invitation'])->group(function(){
                 Route::get('/users/set-invitation', [UserController::class, 'invitationForm'])->name('set-invitation');

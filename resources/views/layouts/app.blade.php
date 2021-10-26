@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'TICaP HUB') }}</title>
+        <link rel="icon" class="w-10 h-10" href="{{ url('assets/ticap-logo.png') }}"/>
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <!-- Styles -->
@@ -219,6 +220,7 @@
           <ul class="flex flex-col py-4 space-y-1">
             <li class="px-5 hidden md:block">
               <div class="flex flex-row items-center h-8">
+                <img class="w-10 h-8 m-0" src="{{ url('assets/ticap-logo.png') }}" alt="">
                 <span class="ml-2 text-sm tracking-wide truncate">TICAP HUB</span>
               </div>
             </li>

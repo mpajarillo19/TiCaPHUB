@@ -10,11 +10,16 @@ use App\Models\Position;
 use App\Models\School;
 use App\Models\Ticap;
 use App\Models\User;
+use App\Models\Slider;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 class HomeController extends Controller
 {
@@ -125,4 +130,41 @@ class HomeController extends Controller
         return view('welcome');
     }
 
+    // HOME SLIDERS
+    public function HomeSlider(){
+        $sliders = Slider::latest()->get();
+        return view('slider.index', compact('sliders'));
+    }
+
+    public function AddSlider(){
+        return view('slider.add-slider');
+    }
+
+    public function Delete($id){
+        $images = Slider::find($id);
+        $old_image = $images ->image;
+        unlink($old_image);
+
+
+        Slider::find($id)->delete();
+        return redirect()->route('home.slider');
+    }
+
+    public function StoreSlider(Request $request){
+        $slider_image = $request->file('image');
+
+        $name_gen = hexdec(uniqid()).'.'.$slider_image->getClientOriginalExtension();
+        Image::make($slider_image)->resize(1920,1088)->save('image/slider/'.$name_gen);
+
+        $last_img = 'image/slider/' .$name_gen;
+
+        Slider::insert([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $last_img,
+            'created_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('home.slider');
+    }
 }

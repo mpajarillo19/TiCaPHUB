@@ -1,20 +1,41 @@
+@php
+	$sliders = DB::table('sliders')->get();
+@endphp
+
 <x-guest-layout>		
 	<section class="">
+			
 	  <div class="sliderAx h-auto">
+		@foreach ($sliders as $key=> $slider)
 		  <div id="slider-1" class="">
+<<<<<<< Updated upstream
 			<div class="bg-cover bg-center h-full text-white py-24 px-10 w-full object-scale-down" style="background-image: url(https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
 			<div class="">
 			<p class="font-bold text-sm uppercase">TICAP 9.0</p>
 			<p class="text-3xl font-bold">PROGRAM FLOW</p>
 			<p class="text-2xl mb-10 leading-none">Lorem ipsum dolor sit amet.</p>
 			<a href="#" target="_blank" class="bg-red-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-red-700">View more</a>
+=======
+			<div class="{{ $key == 0 ? 'active' : '' }}py-10 md:py-32 lg:py-52 bg-cover bg-center h-full text-white px-10 w-full object-scale-down" style="background-image: url({{ asset($slider->image) }});">
+			<div class="">
+			<p class="font-bold text-sm uppercase">{{ $slider->title }}</p>
+			<p class="text-3xl font-bold">{{ $slider->title }}</p>
+			<p class="text-2xl mb-10 leading-none">{{ $slider->description }}</p>
+			<a href="#" target="_blank" class="bg-red-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-red-700">View</a>
+>>>>>>> Stashed changes
 			</div>  
 		</div> <!-- container -->
 		  <br>
 		  </div>
+<<<<<<< Updated upstream
 	
 		  <div id="slider-2" class="">
 			<div class="bg-cover bg-center h-full text-white py-24 px-10 w-full object-scale-down" style="background-image: url(https://scontent.fcrk1-1.fna.fbcdn.net/v/t1.6435-9/126866588_10158623974150853_7257299116655863649_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeFxlnvVhB7zIm-wcrwYQEhw8yYBeCuDIh3zJgF4K4MiHcLqbXF5QITFD_rG0WlJnybXINRRWKY2wwwdXedQEqpE&_nc_ohc=N6JAy2T_RjQAX9MqKOv&tn=kr8BrwWX55rAZBvZ&_nc_ht=scontent.fcrk1-1.fna&oh=9e50c0f3abfe940f3f832b24ba23b783&oe=618B21DA)">
+=======
+		  @endforeach
+		  <div  id="slider-2" class="">
+			<div class="py-10 md:py-32 lg:py-52 bg-cover bg-center h-full text-white px-10 w-full object-contain md:object-scale-down" style="background-image: url(https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.6435-9/84208363_10157998837678232_4444131587499491328_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHmAILWaduyGUq7VyafWOnHRjfr1E3f8zNGN-vUTd_zM9E5ReZwF5VcWvYY1GqwFUJ490WM3e0k5gubvkM7dEs-&_nc_ohc=stfDLe2TSycAX-AMzNf&_nc_ht=scontent.fwnp1-1.fna&oh=4fc84044a5e3ae5d8f74c6a3e92d7929&oe=61907FC3)">
+>>>>>>> Stashed changes
 			<div class="">
 				<p class="font-bold text-sm uppercase">TICAP 5.0</p>
 				<p class="text-3xl font-bold">BSITWMA</p>
